@@ -3,7 +3,7 @@ import React from 'react'
 import { shape, number, string } from 'prop-types'
 
 export default class Preview extends React.Component {
-  static propTypes = {
+  static propTypes = {  // 类型检查
     rect: shape({
       width: number,
       height: number,
@@ -32,7 +32,7 @@ export default class Preview extends React.Component {
     ctx.strokeStyle = 'red'
 
     if (rect && (rect.width > 1 || rect.height > 1)) {
-      ctx.drawImage(
+      ctx.drawImage(  // context.drawImage(img,x,y,width,height);在画布上定位图像，并规定图像的宽高
         this.image,
         Math.round(-rect.x * (width / rect.width)),
         Math.round(-rect.y * (height / rect.height)),

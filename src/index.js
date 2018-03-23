@@ -6,12 +6,11 @@ import ReactDOM from 'react-dom'
 import loadImageURL from './utils/load-image-url'
 import loadImageFile from './utils/load-image-file'
 
-const isTouchDevice = !!(
+const isTouchDevice = !!( // 判断是否为移动设备
   typeof window !== 'undefined' &&
   typeof navigator !== 'undefined' &&
   ('ontouchstart' in window || navigator.msMaxTouchPoints > 0)
 )
-
 const isFileAPISupported = typeof File !== 'undefined'
 
 const draggableEvents = {
@@ -256,7 +255,7 @@ class AvatarEditor extends React.Component {
     return Array.isArray(border) ? border : [border, border]
   }
 
-  getDimensions() {
+  getDimensions() { // 获取尺寸
     const { width, height, rotate, border } = this.props
 
     const canvas = {}
@@ -332,7 +331,7 @@ class AvatarEditor extends React.Component {
    * Get the image scaled to original canvas size.
    * This was default in 4.x and is now kept as a legacy method.
    */
-  getImageScaledToCanvas() {
+  getImageScaledToCanvas() { // 初始化canvas对象
     const { width, height } = this.getDimensions()
 
     const canvas = document.createElement('canvas')
@@ -365,21 +364,19 @@ class AvatarEditor extends React.Component {
     return Math.min(1, canvasAspect / imageAspect)
   }
 
-  getCroppingRect() {
+  getCroppingRect() { // 裁剪的位置及大小
     const position = this.props.position || {
       x: this.state.image.x,
       y: this.state.image.y,
     }
     const width = 1 / this.props.scale * this.getXScale()
     const height = 1 / this.props.scale * this.getYScale()
-
     const croppingRect = {
       x: position.x - width / 2,
       y: position.y - height / 2,
       width,
       height,
     }
-
     let xMin = 0
     let xMax = 1 - croppingRect.width
     let yMin = 0

@@ -16,13 +16,13 @@ class App extends React.Component {
     height: 200,
   }
 
-  handleNewImage = e => {
+  handleNewImage = e => { // 获取上传的图片
     this.setState({ image: e.target.files[0] })
   }
 
   handleSave = data => {
-    const img = this.editor.getImageScaledToCanvas().toDataURL()
-    const rect = this.editor.getCroppingRect()
+    const img = this.editor.getImageScaledToCanvas().toDataURL() // 获取canvas上的图像然后转换成data URL
+    const rect = this.editor.getCroppingRect() // 获取裁剪区域
 
     this.setState({
       preview: {
@@ -36,18 +36,18 @@ class App extends React.Component {
     })
   }
 
-  handleScale = e => {
+  handleScale = e => {  // 获取缩放
     const scale = parseFloat(e.target.value)
     this.setState({ scale })
   }
 
+  //  缩放是否能小于1
   handleAllowZoomOut = ({ target: { checked: allowZoomOut } }) => {
     this.setState({ allowZoomOut })
   }
 
   rotateLeft = e => {
     e.preventDefault()
-
     this.setState({
       rotate: this.state.rotate - 90,
     })
@@ -90,7 +90,7 @@ class App extends React.Component {
     console.log('callback', e)
   }
 
-  setEditorRef = editor => {
+  setEditorRef = editor => { // 参数editor是ReactAvatarEditor组件实例
     if (editor) this.editor = editor
   }
 
@@ -113,7 +113,8 @@ class App extends React.Component {
         >
           <div>
             <ReactAvatarEditor
-              ref={this.setEditorRef}
+              ref={this.setEditorRef} // ref表示对组件实例的引用， 可以设置为一个回调函数
+              // 组件被挂载时回调函数立即执行，回调函数的参数为该组件的实例。
               scale={parseFloat(this.state.scale)}
               width={this.state.width}
               height={this.state.height}
