@@ -14,7 +14,7 @@ const isTouchDevice = !!( // 判断是否为移动设备
 const isFileAPISupported = typeof File !== 'undefined'
 
 const draggableEvents = {
-  touch: {
+  touch: { // 移动端触摸事件
     react: {
       down: 'onTouchStart',
       mouseDown: 'onMouseDown',
@@ -34,7 +34,7 @@ const draggableEvents = {
       mouseUp: 'mouseup',
     },
   },
-  desktop: {
+  desktop: {  // 非移动端鼠标事件
     react: {
       down: 'onMouseDown',
       drag: 'onDragOver',
@@ -49,7 +49,7 @@ const draggableEvents = {
     },
   },
 }
-const deviceEvents = isTouchDevice
+const deviceEvents = isTouchDevice  
   ? draggableEvents.touch
   : draggableEvents.desktop
 
@@ -58,7 +58,7 @@ const pixelRatio =
     ? window.devicePixelRatio
     : 1
 
-// Draws a rounded rectangle on a 2D context.
+// Draws a rounded rectangle on a 2D context.根据border-radius画矩形
 const drawRoundedRect = (context, x, y, width, height, borderRadius) => {
   if (borderRadius === 0) {
     context.rect(x, y, width, height)
@@ -638,7 +638,7 @@ class AvatarEditor extends React.Component {
     const defaultStyle = {
       width: dimensions.canvas.width,
       height: dimensions.canvas.height,
-      cursor: this.state.drag ? 'grabbing' : 'grab',
+      cursor: this.state.drag ? 'grabbing' : 'grab',  // 光标抓取
     }
 
     const attributes = {
