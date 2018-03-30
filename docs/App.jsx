@@ -12,8 +12,8 @@ class App extends React.Component {
     rotate: 0,
     borderRadius: 0,
     preview: null,
-    width: 200,
-    height: 200,
+    width: 400,
+    height: 400,
   }
 
   handleNewImage = e => { // 获取上传的图片
@@ -229,18 +229,7 @@ class App extends React.Component {
             }}
           />
         )}
-        {!!this.state.preview && (
-          <Preview
-            width={
-              this.state.preview.scale < 1
-                ? this.state.preview.width
-                : this.state.preview.height * 478 / 270
-            }
-            height={this.state.preview.height}
-            image="avatar.jpg"
-            rect={this.state.preview.rect}
-          />
-        )}
+        
       </div>
     )
   }

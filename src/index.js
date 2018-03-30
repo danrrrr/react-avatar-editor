@@ -168,6 +168,7 @@ class AvatarEditor extends React.Component {
       this.loadImage(this.props.image)
     }
     this.paint(context)
+    this.paintImage(context, this.state.image);
     if (document) {
       const nativeEvents = deviceEvents.native
       document.addEventListener(nativeEvents.move, this.handleMouseMove, false)
@@ -251,7 +252,7 @@ class AvatarEditor extends React.Component {
     return this.props.rotate % 180 !== 0
   }
 
-  getBorders(border = this.props.border) {
+  getBorders(border = this.props.border) { // 获取border
     return Array.isArray(border) ? border : [border, border]
   }
 
