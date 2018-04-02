@@ -22,12 +22,12 @@ class App extends React.Component {
 
   handleSave = data => {
     const img = this.editor.getImageScaledToCanvas().toDataURL() // 获取canvas上的图像然后转换成data URL
-    const rect = this.editor.getCroppingRect() // 获取裁剪区域
+    // const rect = this.editor.getCroppingRect() // 获取裁剪区域
 
     this.setState({
       preview: {
         img,
-        rect,
+        // rect,
         scale: this.state.scale,
         width: this.state.width,
         height: this.state.height,

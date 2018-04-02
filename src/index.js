@@ -299,13 +299,17 @@ class AvatarEditor extends React.Component {
 
     // create a canvas with the correct dimensions
     const canvas = document.createElement('canvas')
-
+    const { width, height } = this.getDimensions()
     if (this.isVertical()) {
-      canvas.width = cropRect.height
-      canvas.height = cropRect.width
+      // canvas.width = cropRect.height
+      // canvas.height = cropRect.width
+      canvas.width = height;
+      canvas.height = width;
     } else {
-      canvas.width = cropRect.width
-      canvas.height = cropRect.height
+      canvas.width = width;
+      canvas.height = height;
+      // canvas.width = cropRect.width
+      // canvas.height = cropRect.height
     }
 
     // draw the full-size image at the correct position,
